@@ -1,10 +1,19 @@
 import React,{useEffect} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import './index.css';
+import Footer from './Components/Footer/Footer';
 
-
+const RootLayout = () => {
+  return (
+    <>
+      <Navbar/>
+      <Outlet/>
+      <Footer/>
+    </>
+  );
+}
 
 const Main = () => {
   useEffect(() => {
@@ -24,9 +33,11 @@ const Main = () => {
   },[]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename = "/home">
       <Routes>
-        
+        <Route path='/' element={<RootLayout />}>
+
+        </Route>
       </Routes>
     </BrowserRouter>
   );
