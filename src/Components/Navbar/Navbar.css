@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
 
-    border-bottom: 1px solid rgb(82, 82, 82);
+    border-bottom: 1px solid rgb(var(--accent-dark));
     color: #FFF;
 }
 
@@ -27,20 +27,29 @@
 
 .navbar-item{
     list-style-type: none;
+    transition: all ease-in-out 0.1s;
 }
 
 .navbar-item a{
-    padding: 0.2rem 0.5rem;
+    padding: 0.05rem 0.5rem 0.2rem 0.5rem;
+
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+
     border-radius: 1.25rem;
 
-    font-size: 1.5rem;
-    font-weight: 400;
-    text-decoration: none;
-    color: #FFF;
+    transition: all ease-in-out 0.1s;
+}
+
+.navbar-item:hover a{
+    color: rgba(255,255,255);
+    transition: all ease-in-out 0.1s;
 }
 
 .navbar-item a.active{
-    background-color: #FFF;
+    background-color: white;
     color: black;
 }
 
@@ -49,5 +58,31 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: end;
+    gap: 1.5rem;
+}
+
+.navbar-auth-button{
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    color: rgb(255, 255, 255, 0.5);
+    transition: all ease-in-out 0.1s;
+}
+
+.navbar-auth-button:hover{
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    color: rgb(255, 255, 255);
+    transition: all ease-in-out 0.1s;
+}
+
+
+
+/*анимация поднимания*/
+.navbar-item:hover, .navbar-auth-button:hover{
+    transform: translateY(-0.1rem);
 }
