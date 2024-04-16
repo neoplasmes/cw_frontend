@@ -34,7 +34,7 @@ const Main = () => {
   },[]);*/
 
   return (
-    <BrowserRouter basename = "/home">
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<RootLayout/>}>
           <Route index element={<HomePage />}/>

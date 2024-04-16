@@ -1,6 +1,8 @@
+import "./Footer.css";
+
 const Footer = () => {
   return (
-    <footer>
+    <footer className="margin-global">
         Footer
     </footer>
   )

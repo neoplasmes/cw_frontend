@@ -13,8 +13,10 @@ const NavigationLink = (props) => {
       <NavLink 
       to={pathName} 
       style={({isActive}) => {
-        return {
-          backgroundColor: isActive ? "gray" : "transparent"
+        return {/*
+          borderRadius: "1.25rem",
+          backgroundColor: isActive ? "white" : "transparent",
+          color: isActive ? "black" : "white"*/
         }
       }}>
         {pageName}
@@ -27,7 +29,7 @@ const NavigationLink = (props) => {
 const Navbar = () => {
 
   return (
-    <nav className="navbar">
+    <nav className="navbar margin-global">
       <ul className="navbar-group">
         <NavigationLink pageName={"Home"} pathName={"/"}/>
         <NavigationLink pageName={"Courses"} pathName={"/courses"}/>

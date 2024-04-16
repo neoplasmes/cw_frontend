@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap');
+
+:root{
+    --accent-dark: 82, 82, 82;
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -5,8 +11,9 @@
 }
 
 body{
-    background-color: black;
+    background-color: rgb(17, 17, 17);
     color: white;
+    font-family: "Poppins", sans-serif;
 }
 
 .margin-global{
