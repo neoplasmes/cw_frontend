@@ -1,22 +1,36 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Outlet, createBrowserRouter, RouterProvider} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Navbar from './Components/Navbar/Navbar';
 import './index.css';
 import Footer from './Components/Footer/Footer';
 import HomePage from './pages/home/page';
+import { CoursePage } from './pages/courses/CoursePage';
 
-const RootLayout = () => {
-  return (
-    <>
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
-    </>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Navbar/>
+        <Outlet/>
+        <Footer/>
+      </>
+    ),
+    children:[
+      {
+        path: "/",
+        element: <HomePage />
+      },
+      {
+        path: "/courses",
+        element: <CoursePage/>
+      }
+    ]
+  }
+]);
 
-const Main = () => {
+
   /*useEffect(() => {
     //как делать пост-запрос
     /*fetch("http://localhost:3500/register",{
@@ -33,17 +47,6 @@ const Main = () => {
 /*
   },[]);*/
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<RootLayout/>}>
-          <Route index element={<HomePage />}/>
-          <Route path='courses'/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(<Main />);
+ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}/>);
