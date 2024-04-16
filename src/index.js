@@ -1,9 +1,10 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {BrowserRouter, Routes, Route, Outlet} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Navbar from './Components/Navbar/Navbar';
 import './index.css';
 import Footer from './Components/Footer/Footer';
+import HomePage from './pages/home/page';
 
 const RootLayout = () => {
   return (
@@ -16,7 +17,7 @@ const RootLayout = () => {
 }
 
 const Main = () => {
-  useEffect(() => {
+  /*useEffect(() => {
     //как делать пост-запрос
     /*fetch("http://localhost:3500/register",{
       method:"POST",
@@ -29,14 +30,15 @@ const Main = () => {
       }
 
     }).then(response => response.json()).then(json => console.log(json)).catch(error=>console.log(error));*/
-
-  },[]);
+/*
+  },[]);*/
 
   return (
     <BrowserRouter basename = "/home">
       <Routes>
-        <Route path='/' element={<RootLayout />}>
-
+        <Route path='/' element={<RootLayout/>}>
+          <Route index element={<HomePage />}/>
+          <Route path='courses'/>
         </Route>
       </Routes>
     </BrowserRouter>
@@ -44,6 +46,4 @@ const Main = () => {
 }
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Main />
-);
+ReactDOM.createRoot(document.getElementById('root')).render(<Main />);

@@ -1,10 +1,45 @@
 .navbar{
-    position: fixed;
+    /*position: fixed;
     top: 0;
     left: 0;
+    right: 0;*/
 
-    width: 100vw;
+    /*width: 100%;*/
     height: 8vh;
 
-    background-color: blue;/*rgb(var(--secondary-black));*/
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0rem 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 2px solid #7c7c7c;
+    color: #FFF;
+}
+
+.navbar-group{
+    flex-basis: 0.75;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar-item{
+    list-style-type: none;
+}
+
+.navbar-item a{
+    text-decoration: none;
+    color: #FFF;
+}
+
+.navbar-auth{
+    flex-basis: 0.25;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
