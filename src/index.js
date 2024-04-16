@@ -26,7 +26,7 @@ const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
-
+        
       </Routes>
     </BrowserRouter>
   );
