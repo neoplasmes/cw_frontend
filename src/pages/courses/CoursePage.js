@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../axios/axios';
+import "./CoursePage.css";
 
-
+const server = "http://localhost:3500"
 
 export const CoursePage = () => {
   const [courses, setCourses] = useState([]);
@@ -18,21 +19,34 @@ export const CoursePage = () => {
       if (response.status === 200){
         setCourses(response.data);
       }
-
-      return () => {
-        controller.abort();
-      }
     }
 
-
     getCourses();
+
+    return () => {
+      controller.abort();
+    }
   },[])
 
   return (
-    <div className='courses-wrapper margin-global'>
-        {courses.map((c) => {
-          return (<div key={c.id}>{c.course_name}</div>);
+
+
+    <section className='education-wrapper margin-global'>
+        {courses.map((course, i) => {
+          return (<CourseItem key={i} name={course.course_name}/>);
         })}
-    </div>
+    </section>
   )
+}
+
+const CourseItem = (props) => {
+
+  return(
+    <div className='education-item'>
+      <h2>{props.name}</h2>
+      <div className='education-item-image'>
+        <img src={`http://localhost:3500/media/courses/${props.name}/itemCover.jpg`}/>
+      </div>
+    </div>
+  );
 }
