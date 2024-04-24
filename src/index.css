@@ -1,9 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;500;600;700;900&display=swap');
 
+
 :root{
+    --font-headers: 'Sofia Pro';
+    --font-body: 'Sofia Pro';
+
+    --bg-primary-light: 255, 255, 254;
+    --bg-secondary-light: 114, 117, 126;
+
+
+    --bg-primary-dark: 22, 22, 22;
+    --bg-secondary-dark: 189, 241, 0;
+    --text-color-dark: 255, 255, 255;
     --accent-dark: 100, 100, 100;
 }
-
+/*
+[data-theme='light'] {
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --text-color: var(--text-color-dark);
+}
+  
+[data-theme='dark'] {
+    --bg-primary: var(--bg-primary-dark);
+    --bg-secondary: var(--bg-secondary-dark);
+    --text-color: var(--text-color-dark);
+    --accent: var(--accent-dark);
+}
+*/
 *{
     padding: 0;
     margin: 0;
@@ -11,12 +35,39 @@
 }
 
 body{
+    position: relative;
     background-color: rgb(17, 17, 17);
+    /*background-image: url(/src/background.jpg);
+    background-attachment: fixed;*/
     color: white;
     font-family: "Open sans", sans-serif;
 }
 
+html{
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    width: 5px;
+}
+
+html::-webkit-scrollbar-track {
+    background: rgb(22, 22, 22);
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: rgb(255,255,255);
+    border-radius: 10px;
+}
+
 .margin-global{
+    margin-top: 1.5rem;
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+.go-back{
+    cursor: pointer;
 }

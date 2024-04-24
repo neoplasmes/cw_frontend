@@ -1,30 +1,61 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, Outlet, createBrowserRouter, RouterProvider} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider, useParams} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import Navbar from './Components/Navbar/Navbar';
 import './index.css';
 import Footer from './Components/Footer/Footer';
-import HomePage from './pages/home/page';
-import { CoursePage } from './pages/courses/CoursePage';
+import HomePage from './pages/home/HomePage';
+import { CoursePage } from './pages/education/CoursePage';
+import { Photography } from './pages/education/photography/Photography';
+import { ErrorPage } from './pages/ErrorPage';
+import { LoginPage } from './pages/login/LoginPage';
+import { RegistrationPage } from './pages/registration/RegistrationPage';
+import { Layout } from './Layout';
+import { AuthorizedOnly } from './context/AuthProvider';
+import { AnotherCourse } from './pages/education/another/AnotherCourse';
+
+const coursesPaths = {
+  course_1: <AnotherCourse />,
+  course_2: <AnotherCourse />,
+  course_3: <AnotherCourse />,
+  photography: <Photography />
+}
+
+const Course = () => {
+  const {courseName} = useParams();
+
+  return coursesPaths[courseName];
+}
 
 const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
-    element: (
-      <>
-        <Navbar/>
-        <Outlet/>
-        <Footer/>
-      </>
-    ),
+    element: <Layout />,
+    /*errorElement: <ErrorPage />,*/
     children:[
       {
-        path: "/",
+        index: true,
         element: <HomePage />
       },
       {
-        path: "/courses",
+        path: "/education",
         element: <CoursePage/>
+      },
+      {
+        path: "/education/:courseName",
+        element: ( 
+          <AuthorizedOnly>
+            <Course />
+          </AuthorizedOnly>
+        ),
+      },
+      {
+        path: "/login",
+        element: <LoginPage />
+      },
+      {
+        path: "/registration",
+        element: <RegistrationPage />
       }
     ]
   }

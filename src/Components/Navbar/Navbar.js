@@ -1,10 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLoaderData, useRouteLoaderData } from "react-router-dom";
 import "./Navbar.css";
-import { createPortal } from "react-dom";
-import { LoginDialog } from "./LoginDialog";
-
-
+import { useAuth } from "../../context/AuthProvider";
+import axios from "../../axios/axios";
 
 
 const NavigationLink = (props) => {
@@ -22,20 +20,61 @@ const NavigationLink = (props) => {
 
 
 const Navbar = () => {
+  const {auth, setAuth} = useAuth();
+
+  const [tryingToAuthorizeAutomatically, setTryingToAuthorizeAutomatically] = useState(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    axios.get("/refresh", {signal: controller.signal, withCredentials: true})
+    .then((response) => {
+      if (response.status === 200) {
+        console.log(response);
+        setAuth({accessToken: response.data.accessToken});
+      }
+    })
+    .catch((error) => {console.log(error)})
+    .finally(() => {setTryingToAuthorizeAutomatically(false)});
+
+    return () => {
+      controller.abort();
+    }
+  }, [])
+
+  const handleLogout = () => {
+    console.log(1);
+
+    axios.get("/logout", {withCredentials: true})
+    .then((response) => {
+      if (response.status === 204) {
+        localStorage.removeItem("username");
+        setAuth({accessToken: null});
+      }
+    })
+  }
 
   return (
-    <nav className="navbar margin-global">
+    <nav className="navbar">
       <ul className="navbar-group">
         <NavigationLink pageName={"Главная"} pathName={"/"}/>
-        <NavigationLink pageName={"Курсы"} pathName={"/courses"}/>
+        <NavigationLink pageName={"Курсы"} pathName={"/education"}/>
       </ul>
       <div className="navbar-auth">
-        <div className="navbar-auth-button">Вход</div>
-        <div className="navbar-auth-button">Регистрация</div>
+        {
+          tryingToAuthorizeAutomatically ?
+          <div>loading...</div> :
+          !auth.accessToken ? 
+            <>
+              <NavigationLink pageName={"Вход"} pathName={"/login"}/>
+              <NavigationLink pageName={"Регистрация"} pathName={"/registration"}/>
+            </> : 
+            <>
+              <h1>welcome {localStorage.getItem("username")}</h1>
+              <div className="navbar-logout" onClick={handleLogout}>logout</div>
+            </>
+        } 
       </div>
-      {createPortal(<>
-        <LoginDialog />
-      </>, document.body)}
     </nav>
   )
 }

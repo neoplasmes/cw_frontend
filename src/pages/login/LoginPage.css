@@ -1,0 +1,24 @@
+.loginPage-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginPage-form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: black;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.loginPage-form h2{
+    text-align: center;
+}
+
+.loginPage-submit{
+    text-align: center;
+}
