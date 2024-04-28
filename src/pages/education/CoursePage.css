@@ -11,15 +11,23 @@
 .education-item {
     cursor: pointer;
     position: relative;
-    background-color: rgb(var(--accent-dark), 0.5);
+    display: grid;
+    grid-template-areas: "header", "cover", "description",;
     /*backdrop-filter: blur(12px);
     border: 2px solid rgb(var(--accent-dark));*/
+    padding: 0.5rem 1.5rem 1rem 1.5rem;
     border-radius: 2rem;
-    padding: 0.25rem 1.5rem 1rem 1.5rem;
+
+    background-color: rgb(var(--accent-dark), 0.5);    
     filter: grayscale(100%);
 
     transition: all 0.25s ease-in-out;
 }
+
+
+
+
+
 
 
 .education-item:hover {
@@ -38,56 +46,51 @@
 {
     height: 40%;
     margin-top: 0.25rem;
-    margin-left: auto;
-    margin-right: auto;
     overflow: hidden;
 }
 
 .education-item h2{
+    display: block;
+    height: 10%;
     text-align: center;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .education-item-image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     scale: 1;
     transition: all 0.25s ease-in-out;
 }
 
 .education-item-description{
     margin-top: 0.5rem;
-    
-    /*text-align: left;*/
     font-weight: 400;
-}
-
-.education-item label {
-    /*position: absolute;
-    bottom: 1.5rem;*/
-
-    font-weight: 400;
-    font-size: small;
 }
 
 .education-item-progress {
     /*position: absolute;
     bottom: 1.5rem;*/
+    margin-top: auto;
     width: 100%;
     height: 1rem;
-    border: 2px solid black;
-    background-color: black;
-    border-radius: 9999px;
     overflow: hidden;
+    border-radius: 9999px;
+    border: 2px solid black;
+    background-color: #FFFFFF;
 }
 
 .education-item-progress-accent {
     /*position: absolute;
     bottom: 1.5rem;*/
-    width: 50%;
+    width: 0%;
     height: 100%;  
     border-radius: 9999px;
     background-color: #22af22;
+}
+
+.education-item-invitation {
+    margin-top: auto;
 }

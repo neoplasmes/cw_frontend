@@ -15,7 +15,7 @@ import { AnotherCourse } from './pages/education/another/AnotherCourse';
 
 const coursesPaths = {
   course_1: <AnotherCourse />,
-  course_2: <AnotherCourse />,
+  physics: <AnotherCourse />,
   history: <AnotherCourse />,
   photography: <Photography />
 }

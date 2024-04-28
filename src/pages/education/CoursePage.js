@@ -48,6 +48,13 @@ export const CoursePage = () => {
 const CourseItem = (props) => {
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const accentName = props.media_path + "-course-accent";
+
+  useEffect(() => {
+    const accent = document.querySelector("#" + accentName);
+    accent.style.width = `${props.progress}%`;
+    console.log(props.progress);
+  }, [])
 
   return(
     <div className='education-item' onClick={() => {
@@ -58,12 +65,12 @@ const CourseItem = (props) => {
         <img  src={`${server}/media/courses/${props.media_path}/itemCover.jpg`}/>
       </div>
       <p className='education-item-description'>{props.description}</p>
-      
+
       {(!(props.progress === undefined) && auth.accessToken) ? 
       <div className='education-item-progress'>
-
+        <div className='education-item-progress-accent' id={accentName}/>
       </div> :
-      <div className='education-item-invite'>Войдите в систему и приступайте к занятиям!</div>
+      <div className='education-item-invitation'>Войдите в систему и приступайте к занятиям!</div>
       }
     </div>
   );
