@@ -16,7 +16,8 @@ export const LoginPage = () => {
 
         try{
             const res = await axios.post("/login",
-            JSON.stringify({username: usernameValue, password: passwordValue}), {
+            JSON.stringify({username: usernameValue, password: passwordValue}), 
+            {
               headers: {"Content-Type":"application/json"},
               withCredentials: true
             }); 

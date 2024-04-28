@@ -22,26 +22,6 @@ const NavigationLink = (props) => {
 const Navbar = () => {
   const {auth, setAuth} = useAuth();
 
-  const [tryingToAuthorizeAutomatically, setTryingToAuthorizeAutomatically] = useState(true);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    axios.get("/refresh", {signal: controller.signal, withCredentials: true})
-    .then((response) => {
-      if (response.status === 200) {
-        console.log(response);
-        setAuth({accessToken: response.data.accessToken});
-      }
-    })
-    .catch((error) => {console.log(error)})
-    .finally(() => {setTryingToAuthorizeAutomatically(false)});
-
-    return () => {
-      controller.abort();
-    }
-  }, [])
-
   const handleLogout = () => {
     console.log(1);
 
@@ -61,10 +41,7 @@ const Navbar = () => {
         <NavigationLink pageName={"Курсы"} pathName={"/education"}/>
       </ul>
       <div className="navbar-auth">
-        {
-          tryingToAuthorizeAutomatically ?
-          <div>loading...</div> :
-          !auth.accessToken ? 
+          {!auth.accessToken ? 
             <>
               <NavigationLink pageName={"Вход"} pathName={"/login"}/>
               <NavigationLink pageName={"Регистрация"} pathName={"/registration"}/>
@@ -72,8 +49,7 @@ const Navbar = () => {
             <>
               <h1>welcome {localStorage.getItem("username")}</h1>
               <div className="navbar-logout" onClick={handleLogout}>logout</div>
-            </>
-        } 
+            </>}
       </div>
     </nav>
   )
