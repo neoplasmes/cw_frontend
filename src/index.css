@@ -41,11 +41,13 @@ body{
     background-attachment: fixed;*/
     color: white;
     font-family: "Open sans", sans-serif;
+    height: 100%;
 }
 
 html{
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 html::-webkit-scrollbar {
@@ -68,6 +70,16 @@ html::-webkit-scrollbar-thumb {
     margin-right: 2rem;
 }
 
+.padding-global{
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .go-back{
     cursor: pointer;
+}
+
+.outlet{
+    height: 90vh;
 }

@@ -8,7 +8,9 @@ export const Layout = () => {
     <>
         <AuthProvider>
             <Navbar />
-            <Outlet />
+            <div className='outlet'>
+              <Outlet />
+            </div>
         </AuthProvider>
     </>
   );

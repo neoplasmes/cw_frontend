@@ -1,0 +1,70 @@
+.course-wrapper{
+    display: flex;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.course-navigation{
+    position: sticky;
+    flex: 1;
+}
+
+.course-chapters-group{
+    height: 100%;
+    overflow-y: auto;
+}
+
+.chapter-item{
+    padding: 0.25rem;
+    list-style-type: none;
+}   
+
+.chapter-item:nth-last-child(1){
+    margin-bottom: 3rem;
+}  
+
+.chapter-item a{
+    display: block;
+    padding: 0.25rem;
+    font-size: 1;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+
+    border-radius: 0.5rem;
+}  
+
+.chapter-item a.active{
+    background-color: white;
+    color: black;
+}  
+
+.chapter-wrapper{
+    flex: 4;
+}
+
+.chapter-scroll{
+    height: 95%;
+    overflow-y: auto;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+} 
+
+.chapter-switch{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    position: sticky;
+    height: 5%;
+}
+
+.chapter-switch a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.chapter-switch a.active{
+    color: rgba(255, 255, 255);
+}

@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../axios/axios';
-import "./CoursePage.css";
+import "./EducationPage.css";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
 
 const server = "http://localhost:3500"
 
-export const CoursePage = () => {
+export const EducationPage = () => {
   const [courses, setCourses] = useState([]);
-  const { auth, tryingToAuthorizeAutomatically } = useAuth();
 
   useEffect(()=>{
       const controller = new AbortController();
 
+      //поменять на withCredentials + в бэкэнде сделать обработку по рефреш токену
       const getCourses = async () => {
         const response = await axios.get("/courses", {
           signal: controller.signal,
-          headers: {
-            ...(auth.accessToken && {Authorization: `Bearer ${auth.accessToken}`}),
-          }
+          withCredentials: true
         }).catch(err => console.log(err));
         
         //console.log(response);
@@ -26,15 +24,14 @@ export const CoursePage = () => {
           setCourses(response.data);
         }
       }
-
-      if (!tryingToAuthorizeAutomatically) {
-        getCourses();
-      }
+      
+      getCourses();
+      
 
       return () => {
         controller.abort();
       }
-  },[tryingToAuthorizeAutomatically])
+  },[])
 
   return (
     <div className='education-wrapper'>
@@ -52,8 +49,7 @@ const CourseItem = (props) => {
 
   useEffect(() => {
     const accent = document.querySelector("#" + accentName);
-    accent.style.width = `${props.progress}%`;
-    console.log(props.progress);
+    if(accent) accent.style.width = `${props.progress}%`;
   }, [])
 
   return(
@@ -65,7 +61,7 @@ const CourseItem = (props) => {
         <img  src={`${server}/media/courses/${props.media_path}/itemCover.jpg`}/>
       </div>
       <p className='education-item-description'>{props.description}</p>
-
+      {/*Здесь важно наличие самого аксес токена, но не его срок годности, ибо если у нас есть хотя какой то аксес токен, то то уже значит, что мы авторизовались через рефреш*/}
       {(!(props.progress === undefined) && auth.accessToken) ? 
       <div className='education-item-progress'>
         <div className='education-item-progress-accent' id={accentName}/>
