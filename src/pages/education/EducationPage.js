@@ -35,6 +35,7 @@ export const EducationPage = () => {
 
   return (
     <div className='education-wrapper'>
+      <img className='educationFon' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="fon"/>
         {courses.map((course, i) => {
           return (<CourseItem key={i} {...course}/>);
         })}

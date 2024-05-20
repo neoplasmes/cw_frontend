@@ -23,13 +23,19 @@ export const RegistrationPage = () => {
     }
 
     return (
-        <div className='loginPage-wrapper margin-global'>
-            <div className='loginPage-form'>
-                <h2>LoginPage</h2>
-                <input id="registrationUsernameInput"/>
-                <input id="registrationPasswordInput"/>
+        <div className='regPage-wrapper '>
+            <div className='regPage-form'>
+                <h2>Регистрация</h2>
+               <div className='regPage-user'>
+                <input id="registrationUsernameInput" placeholder='Логин'/>
+                </div>
+                <div className='regPage-password' >
+                <input id="registrationPasswordInput" placeholder='Пароль'/>
+                </div>
                 <div className='loginForm-submit' onClick={submitRegistration}>Зарегистрироваться</div>
+                
             </div>
+                <img className='regPage-img' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="фон"/>
         </div>
     );
 }

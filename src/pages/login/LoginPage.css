@@ -1,24 +1,208 @@
 .loginPage-wrapper{
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .loginPage-form{
-    background-color: white;
+    position: absolute;
+    width: 450px;
+    height: 350px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-
-    color: black;
-    padding: 1rem;
-    border-radius: 1rem;
+    top: 145px;
+    background: rgba(24, 209, 154, 0.34);
+    border-radius: 15px;
+    z-index: 2;
+    left: 550px;
+    
+    
 }
 
+
+
+
 .loginPage-form h2{
-    text-align: center;
+    
+
+position: absolute;
+top: 0px;
+left: 180px;
+font-family: 'Open Sans Hebrew Condensed';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 30px;
+color: #FFFFFF;
+
+
 }
 
 .loginPage-submit{
-    text-align: center;
+text-align: center;
+position: absolute;
+width: 290px;
+height: 45px;
+left: 493px;
+top: 456px;
+
+
+
+}
+.loginPage-login{
+display: flex;
+align-items: center;
+
+position: absolute;
+width: 290px;
+height: 45px;
+left: 80px;
+top: 70px;
+background-color: rgba(0, 0, 0, 0.49);
+border-radius: 15px;
+}
+#loginUsernameInput{
+  background: transparent;
+  outline: 0;
+  margin: 0;
+  appearance: 0;
+  display: block;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-width: 0px;
+  font-size: 15px;
+ cursor: pointer;
+}
+.loginPage-password{
+
+display: flex;
+align-items: center;
+
+position: absolute;
+width: 290px;
+height: 45px;
+left: 80px;
+top: 140px;
+
+background: rgba(0, 0, 0, 0.49);
+border-radius: 15px;
+
+}
+#loginPasswordInput{
+  background: transparent;
+  outline: 0;
+  margin: 0;
+  appearance: 0;
+  display: block;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-width: 0px;
+  font-size: 15px;
+
+}
+.loginForm-submit{
+position: absolute;
+width: 290px;
+height: 45px;
+left: 80px;
+top: 210px;
+text-align: center;
+background: rgba(24, 209, 154, 0.7);
+border-radius: 15px;
+}
+
+
+.regPage-img{
+position: relative;
+width: 1800px;
+top: -100px;
+left: -32px;
+  z-index: 1;
+}
+.regPage-user{
+  display: flex;
+  align-items: center;
+  
+  position: absolute;
+  width: 290px;
+  height: 45px;
+  left: 80px;
+  top: 70px;
+  
+  background: rgba(0, 0, 0, 0.49);
+  border-radius: 15px;
+}
+#registrationUsernameInput{
+  background: transparent;
+  outline: 0;
+  margin: 0;
+  appearance: 0;
+  display: block;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-width: 0px;
+  font-size: 15px;
+ cursor: pointer;
+
+}
+.regPage-password{
+  display: flex;
+align-items: center;
+
+position: absolute;
+width: 290px;
+height: 45px;
+left: 80px;
+top: 140px;
+
+background: rgba(0, 0, 0, 0.49);
+border-radius: 15px;
+}
+#registrationPasswordInput{
+  background: transparent;
+  outline: 0;
+  margin: 0;
+  appearance: 0;
+  display: block;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-width: 0px;
+  font-size: 15px;
+ cursor: pointer;
+}
+
+.regPage-form{
+  position: absolute;
+  width: 450px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  top: 145px;
+  background: rgba(24, 209, 154, 0.34);
+  border-radius: 15px;
+  z-index: 2;
+  left: 550px;
+  
+}
+.regPage-wrapper{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.regPage-form h2{
+  position: absolute;
+  top: 0px;
+  left: 180px;
+  font-family: 'Open Sans Hebrew Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  color: #FFFFFF;
 }

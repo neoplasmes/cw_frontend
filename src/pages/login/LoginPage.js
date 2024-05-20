@@ -4,6 +4,7 @@ import axios from '../../axios/axios';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
 
+
 export const LoginPage = () => {
     const { auth, setAuth } = useAuth();
 
@@ -18,8 +19,8 @@ export const LoginPage = () => {
             const res = await axios.post("/login",
             JSON.stringify({username: usernameValue, password: passwordValue}), 
             {
-              headers: {"Content-Type":"application/json"},
-              withCredentials: true
+            headers: {"Content-Type":"application/json"},
+            withCredentials: true
             }); 
 
             if(res.status === 200){
@@ -37,15 +38,24 @@ export const LoginPage = () => {
     }
 
     return (
-    <>{
-        !auth.accessToken ?
-        <div className='loginPage-wrapper margin-global'>
+        <>{
+            !auth.accessToken ? 
+            <div className='loginPage-wrapper margin-global'>
+
             <div className='loginPage-form'>
-                <h2>LoginPage</h2>
-                <input id="loginUsernameInput"/>
-                <input id="loginPasswordInput"/>
+                <h2>Вход</h2>
+                <div className='loginPage-login'>
+                <input id="loginUsernameInput" placeholder='Логин'/>
+                </div>
+                <div className='loginPage-password'>
+                   
+                <input id="loginPasswordInput" placeholder='Пароль'/>
+                </div>
+               
+            
                 <div className='loginForm-submit' onClick={submitLogin}>Войти</div>
             </div>
+            <img className='regPage-img' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="фон"/>
         </div> : <Navigate to="/" replace={true}/>
 
     }</>

@@ -1,8 +1,15 @@
 import React from "react";
 import { Introduction } from "./Introduction";
 import { First, firstTest } from "./First";
-import { Second } from "./Second";
-import { Third } from "./Third";
+import { Second,secondTest } from "./Second";
+import{Third,thirdTest} from "./Third";
+import { Fourth, fourthTest } from "./Fourth";
+import { Fifth, fifthTest } from "./Fifth";
+import {Sixth,sixthTest } from "./Sixth";
+import{Seventh} from "./Seventh";
+import{Eighth, eighthTest} from "./Eighth";
+import {Epilogue} from "./Epilogue";
+
 
 
 
@@ -16,33 +23,33 @@ export const photographyMap = {
         },
     "2": {
         element: <Second />,
-        test: firstTest
+        test: secondTest
        },
     "3": {
-        element: <First />,
-        test: firstTest
+        element: <Third />,
+        test: thirdTest
        },
     "4": {
-        element: <First />,
-        test: firstTest
+        element: <Fourth />,
+        test: fourthTest
        },
     "5": {
-        element: <First />,
-        test: firstTest
+        element: <Fifth />,
+        test: fifthTest
        },
     "6": {
-        element: <First />,
-        test: firstTest
+        element: <Sixth />,
+        test: sixthTest
        },
     "7": {
-        element: <First />,
-        test: firstTest
+        element: <Seventh />,
+        
        },
     "8": {
-         element: <First />,
-         test: firstTest
+         element: <Eighth />,
+         test: eighthTest
         },
     "epilogue": {
-        element: <></>,
+        element: <Epilogue/>,
        },
 }

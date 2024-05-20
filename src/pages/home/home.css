@@ -1,3 +1,110 @@
 .home-wrapper{
+    position: fixed;
     
+
+}
+.home-wrapper h2{
+font-family: Open Sans Hebrew Condensed;
+font-size: 60px;
+font-weight: 400;
+line-height: 72.01px;
+text-align: left;
+position: relative;
+top: 10vh;
+}
+.home-vector1{
+position: absolute;
+top: -15px;
+left: 180px;
+}
+.home-vector2{
+position: absolute;
+top: 320px;
+left: 550px;
+}
+.home-vector3{
+    position: absolute;
+    top: 370px;
+    left: 540px;
+}
+.collage-1{
+display: flex;
+height: 100%;
+width: 100%;
+top: 20vh;
+}
+.collage-1 img{
+    height: 160px;
+    width: 280px;
+    margin: 20px;
+    border-radius: 10px;
+    
+}
+.collage-2{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.collage-2 img{
+    height: 160px;
+    width: 280px;
+    margin: 20px;
+    border-radius: 10px;
+}
+.collage{
+    position: relative;
+    top: 100px;
+    left: -50px;
+    
+}
+.girl{
+display: flex;
+height: 292px;
+width: 300px;
+border-radius: 10px;
+
+}
+.GIRL1{
+position: relative;
+top: -450px;
+left: 1006px;
+z-index: 2;
+}
+.predict-girl{
+    position: relative;
+    top: -410px;
+    left: 1055px;
+    z-index: 2;
+    font-size: 20px;
+}
+.greenBox{
+    position: relative;
+    top: -700px;
+    left: 1050px; 
+    z-index: 1;
+}
+.cross1{
+    position: relative;
+    top: -809px;
+    left: 1003px;
+}
+.cross2{
+    position:relative;
+    top: -1109px;
+    left: 1300px;
+    z-index: 2;
+}
+.comma{
+    position: relative;
+    top: -1100px;
+    left: 700px;
+}
+.fon{
+position: relative;
+    top: -1510px;
+    z-index: -1;
+    left: -40px;
+    width: 1600px;
+    height: 812px;
+
 }

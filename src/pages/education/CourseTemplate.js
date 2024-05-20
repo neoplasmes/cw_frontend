@@ -65,16 +65,15 @@ export const CourseTemplate = () => {
             isAlive = false;
             controller.abort();
         }
-
+        
     }, []);
-
+    
     return (
         <div className='course-wrapper padding-global'>
             {isLoaded ? 
             <>
                 <nav className='course-navigation'>
-                    
-                    <ul className='course-chapters-group'>
+                <ul className='course-chapters-group'>
                         <li className='go-back' onClick={() => {navigate("/education");}}> go back </li>
                         {chapters.map((chapter, i) => {
                             return <ChapterLink key = {i} {...chapter}/>
