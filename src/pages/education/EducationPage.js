@@ -34,8 +34,7 @@ export const EducationPage = () => {
   },[])
 
   return (
-    <div className='education-wrapper'>
-      <img className='educationFon' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="fon"/>
+    <div className='education-wrapper padding-global'>
         {courses.map((course, i) => {
           return (<CourseItem key={i} {...course}/>);
         })}

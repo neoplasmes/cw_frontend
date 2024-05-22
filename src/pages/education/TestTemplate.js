@@ -92,7 +92,7 @@ export const TestTemplate = () => {
         //Если всё нормально, то
         try {
             //Данный запрос делаем через axios для accessToken'ов
-            const result = await protectedAxios.post("/checkAnswers",
+            const result = await protectedAxios.post("/examination",
             JSON.stringify({
                 coursePath: course,
                 chapterPath: chapter,
@@ -116,7 +116,7 @@ export const TestTemplate = () => {
 
     return (
         <div className='examination'>
-            {questions.map((question, questionNumber) => {
+            {componentIsAlive && questions.map((question, questionNumber) => {
                 return(
                     <div className='examination-unit' key={questionNumber} ref={(element) => (questionsRefs.current[questionNumber] = element)}>
                         <p>{`${questionNumber+1}. ${question.text}`}</p>

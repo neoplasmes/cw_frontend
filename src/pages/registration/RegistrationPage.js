@@ -35,7 +35,6 @@ export const RegistrationPage = () => {
                 <div className='loginForm-submit' onClick={submitRegistration}>Зарегистрироваться</div>
                 
             </div>
-                <img className='regPage-img' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="фон"/>
         </div>
     );
 }

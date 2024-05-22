@@ -7,10 +7,11 @@ export const Layout = () => {
   return (
     <>
         <AuthProvider>
+            {/*<img src='http://localhost:3500/media/website-background'/>*/}
             <Navbar />
-            <div className='outlet'>
+            <main className='website-body'>
               <Outlet />
-            </div>
+            </main>
         </AuthProvider>
     </>
   );

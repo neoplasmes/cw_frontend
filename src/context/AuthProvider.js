@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { createContext } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios, { protectedAxios } from '../axios/axios';
+import { Loader } from '../Components/Loader/Loader';
 
 
 const AuthContext = createContext();
@@ -69,6 +70,10 @@ export const AuthProvider = ({children}) => {
           } catch (tokenError) {
             //Сюда попадаем, если не получается обновить аксес токен
             console.log(tokenError);
+            setAuth({
+              accessToken: null
+            });
+            localStorage.removeItem("username");
             navigate("/login", {state: {from: window.location.pathname}});
             return Promise.reject(error);
           }
@@ -89,7 +94,7 @@ export const AuthProvider = ({children}) => {
   
   return (
     <AuthContext.Provider value={{auth, setAuth, tryingToAuthorizeAutomatically}}>
-      {tryingToAuthorizeAutomatically ? <div>loading</div> : children}
+      {tryingToAuthorizeAutomatically ? <Loader /> : children}
     </AuthContext.Provider>
   )
 }

@@ -55,7 +55,6 @@ export const LoginPage = () => {
             
                 <div className='loginForm-submit' onClick={submitLogin}>Войти</div>
             </div>
-            <img className='regPage-img' src="http://localhost:3500/media/courses/photography/loginfon.jpg" alt="фон"/>
         </div> : <Navigate to="/" replace={true}/>
 
     }</>
