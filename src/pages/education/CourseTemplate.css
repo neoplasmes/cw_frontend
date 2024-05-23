@@ -26,7 +26,7 @@
 .chapter-item a{
     display: block;
     padding: 0.25rem;
-    font-size: 1;
+    font-size: 1.5rem;
     font-weight: 600;
     text-decoration: none;
     background-color: rgba(255, 255, 255, 0.5);
@@ -34,12 +34,33 @@
     border-radius: 0.5rem;
 }  
 
+.chapter-item a div{
+    display: none;
+    margin-top: 0.1rem;
+    font-size: 0.9rem;
+    background-color: rgb(30, 58, 51);
+    color: rgb(160, 160, 160);
+    border-radius: 1rem;
+    padding: 0.1rem;
+    text-align: center;
+}
+
 .chapter-item a.active{
     /*background-color: white;*/
     background-color: rgba(32, 98, 82, 1);
 
-    color: black;
-}  
+    color: rgb(255, 255, 255);
+} 
+
+.chapter-item a.active div{
+    display: block;
+}
+
+@media (max-width: 1400px) {
+    .chapter-item a{
+        font-size: 1rem;
+    }  
+}
 
 .chapter-wrapper{
     flex: 4;

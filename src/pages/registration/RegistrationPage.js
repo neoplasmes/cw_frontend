@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import "../login/LoginPage.css";
 import axios from '../../axios/axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthProvider';
 
 export const RegistrationPage = () => {
+    const {auth} = useAuth();
     const redirectPath = useLocation().state?.from || "/";
     const navigate = useNavigate();
 
@@ -23,19 +25,25 @@ export const RegistrationPage = () => {
     }
 
     return (
-        <div className='regPage-wrapper '>
-            <div className='regPage-form'>
+      <>{auth.accessToken ? <Navigate to={"/"} replace={true}/> :
+        <div className='loginPage-wrapper padding-global'>
+            <div className='loginPage-form'>
+
                 <h2>Регистрация</h2>
-               <div className='regPage-user'>
-                <input id="registrationUsernameInput" placeholder='Логин'/>
+
+                <div className='loginPage-login'>
+                  <input id="registrationUsernameInput" placeholder='Логин'/>
                 </div>
-                <div className='regPage-password' >
-                <input id="registrationPasswordInput" placeholder='Пароль'/>
+
+                <div className='loginPage-password' >
+                  <input id="registrationPasswordInput" placeholder='Пароль'/>
                 </div>
-                <div className='loginForm-submit' onClick={submitRegistration}>Зарегистрироваться</div>
-                
+
+                <div className='loginPage-submit' onClick={submitRegistration}>Зарегистрироваться</div>   
+
             </div>
-        </div>
+        </div>}
+      </>
     );
 }
 

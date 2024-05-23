@@ -51,7 +51,7 @@
 
     text-align: center;
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     
 }
 
@@ -78,8 +78,7 @@
     font-size: 1.5rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-
-
+    padding: 0.25rem 1rem 0.5rem 1rem;
 }
 
 .education-item-progress {
@@ -98,11 +97,21 @@
     width: 0%;
     height: 100%;  
     border-radius: 9999px;
-    background-color: #22af22;
+    background-color: rgb(21, 116, 52);
 
     transition: width 0.5s ease-in-out;
 }
 
 .education-item-invitation {
     grid-area: value;
+}
+
+@media (max-width: 1400px) {
+    .education-item h2{
+        font-size: 1.25rem;
+    }
+
+    .education-item-description{
+        font-size: 1.25rem;
+    }
 }

@@ -2,17 +2,21 @@ import React, { useEffect, useState } from 'react';
 import "./CourseTemplate.css";
 import { useNavigate, NavLink, Outlet, useParams} from 'react-router-dom';
 import axios from '../../axios/axios';
-import { useAuth } from '../../context/AuthProvider';
 import { chaptersMap } from './chaptersMap';
 
 
 const ChapterLink = (props) => {
-    const {media_path, chapter_name} = props;
+    const {media_path, chapter_name, progress, has_test} = props;
+    
 
     return(
         <li className="chapter-item">
             <NavLink to={media_path}>
                 {chapter_name}
+                {has_test && 
+                <div>
+                    Последний результат: <span style={{fontWeight: 800}}>{progress}%</span>
+                </div>}
             </NavLink>
         </li>
     );
@@ -20,7 +24,6 @@ const ChapterLink = (props) => {
 
 export const CourseTemplate = () => {
     const navigate = useNavigate();
-    const { auth } = useAuth();
     const { course, chapter } = useParams();
 
     const [chapters, setChapters] = useState([]);
@@ -42,14 +45,14 @@ export const CourseTemplate = () => {
 
         const getChapters = async () => {
             try {
-                //Заменить на обычный axios with credentials
                 const response = await axios.get(`courses/${course}`, {
                     signal: controller.signal,
                     withCredentials: true
                 });
 
-                console.log(response.data)
+                //console.log(response.data)
                 isAlive && setChapters(response.data);
+                //console.log(chapters);
             } 
             catch (exception) {
                 console.log(exception);
@@ -65,18 +68,30 @@ export const CourseTemplate = () => {
             isAlive = false;
             controller.abort();
         }
-        
+
     }, []);
-    
+
+    //функция по которой на клиенте обновится прогресс соответствущей главы
+    const updateChapterProgressOnClient = (media_path, newProgress) => {
+        let updatedChapter = chapters.find((chapter) => chapter.media_path === media_path);
+        updatedChapter.progress = newProgress;
+
+        let newData = [...chapters];
+        newData[updatedChapter.order_id - 1] = updatedChapter;
+
+        setChapters(newData);
+    }
+
     return (
         <div className='course-wrapper padding-global'>
             {isLoaded ? 
             <>
                 <nav className='course-navigation'>
-                <ul className='course-chapters-group'>
+                    
+                    <ul className='course-chapters-group'>
                         <li className='go-back' onClick={() => {navigate("/education");}}> go back </li>
                         {chapters.map((chapter, i) => {
-                            return <ChapterLink key = {i} {...chapter}/>
+                            return <ChapterLink key = {i} {...chapter} />
                         })}
                     </ul>
                 </nav> 
@@ -87,7 +102,7 @@ export const CourseTemplate = () => {
                         <NavLink to={`/education/${course}/${chapter}/test`}>Тест</NavLink>
                     </div>}
                     <div className='chapter-scroll'>
-                        <Outlet/>
+                        <Outlet context={{updateChapterProgressOnClient}}/>
                     </div>
                 </div>
             </> :
@@ -96,3 +111,7 @@ export const CourseTemplate = () => {
         </div>
     )
 }
+
+
+
+

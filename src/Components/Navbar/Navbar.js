@@ -10,8 +10,7 @@ const NavigationLink = (props) => {
 
   return(
     <li className="navbar-item">
-      <NavLink 
-      to={pathName}>
+      <NavLink to={pathName}>
         {pageName}
       </NavLink>
     </li>
@@ -47,8 +46,8 @@ const Navbar = () => {
               <NavigationLink pageName={"Регистрация"} pathName={"/registration"}/>
             </> : 
             <>
-              <h1>welcome {localStorage.getItem("username")}</h1>
-              <div className="navbar-logout" onClick={handleLogout}>logout</div>
+              <h1>Добро пожаловать, {localStorage.getItem("username")}!</h1>
+              <div className="navbar-item navbar-logout" onClick={handleLogout}>Выйти</div>
             </>}
       </div>
     </nav>

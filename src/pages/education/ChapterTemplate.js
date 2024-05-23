@@ -17,7 +17,6 @@ export const ChapterTemplate = () => {
     //если всё норм, то всё норм
     return(
       <>
-        {course} {chapter} 
         {chaptersMap[course][chapter].element}
       </>
     )
